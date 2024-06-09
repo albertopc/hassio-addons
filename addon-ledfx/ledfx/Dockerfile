@@ -16,8 +16,9 @@ RUN \
         cython=0.29.32-r0 \
         python3-dev=3.10.9-r1 \
         zlib-dev=1.2.13-r0 \
-        linux-headers=5.19.5-r0 \
-    && apk add --no-cache \
+        linux-headers=5.19.5-r0 
+RUN \
+    apk add --no-cache \
         alsa-plugins-pulse=1.2.7.1-r0 \
         ffmpeg-libs=5.1.2-r1 \
         nginx=1.22.1-r0 \
@@ -26,12 +27,13 @@ RUN \
         pulseaudio=16.1-r6 \
         py3-packaging=21.3-r2 \
         py3-pip=22.3.1-r1 \
-        python3=3.10.9-r1 \
-    \
-    && pip3 install -r /tmp/requirements.txt \
-    \
-    && apk del --no-cache --purge .build-dependencies \
-    && rm -fr \
+        python3=3.10.9-r1
+RUN \
+    pip3 install -r /tmp/requirements.txt
+RUN \
+    apk del --no-cache --purge .build-dependencies
+RUN \
+    rm -fr \
         /etc/nginx \
         /root/.cache \
         /tmp/*
